@@ -50,6 +50,7 @@ h1 {
 .element {
     width: 70%;
     margin: 0 auto 6em;
+	margin-top: 100px;
 }
 
 /*--teddy-bear--*/
