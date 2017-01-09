@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="script/jquery.js"></script>
+    <script>
+      var channelId = 'UC8LoLI5rtuSjZQB2ppdUA4Q';
+      var key = 'AIzaSyDvRLxBPBPpXEcyqs5DF8IfoUdCEorNMFk';
+      var path = 'snippet';
+      var order = '';
+      var myInit = { method: 'GET'};
+      
+      var myRequest = new Request('https://www.googleapis.com/youtube/v3/search?part=snippet&order=date&maxResults=50&channelId=' + channelId + '&key=' + key, myInit);
+
+
+      fetch(myRequest)
+      .then(function(response) {
+        return response.json();
+      })
+      .then(function(res) {
+        console.log(res);
+        var videoData = '';
+        for(var i = 0; i < res.items.length; i++){
+          videoData = res.items[i];
+          $('#result').append('ID : ' + i + ' ' + videoData.id.videoId + '<br />'
+          + ' Name : ' + videoData.snippet.title + '<br />');
+        }
+      })
+    </script>
+  </head>
+  <body>
+    <div id="result"></div>
+  </body>
+</html>
